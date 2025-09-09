@@ -10,7 +10,7 @@ async def handle_question(payload: UserRequest) -> AccidentReport:
         result = await Runner.run(
             accident_response_agent, 
             f"{payload.request} at longitude {payload.longitude} and latitude {payload.latitude}").then(
-        hospital_search_service(result, location_context=LocationContext(longitude=payload.longitude, latitude=payload.latitude)))
+        hospital_search_service(result.final_output_as(AccidentReport), location_context=LocationContext(longitude=payload.longitude, latitude=payload.latitude)))
         return result.final_output_as(AccidentReport)
     
     except Exception as e:
