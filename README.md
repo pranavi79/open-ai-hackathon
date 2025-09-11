@@ -13,22 +13,16 @@ In critical situations, the "golden hour"—the first 60 minutes after a traumat
 <h2> How it Works: Unleashing the Power of the Crowd </h2>
 
 MediAid turns ordinary bystanders into a network of first responders.
-1. Incident Reporting (via Chatbot)
-A bystander can quickly report an incident using our intuitive chatbot interface. They provide details of the situation and the location.
+1. Incident Reporting (via Chatbot supported on phone and web)
+A bystander can quickly report an incident using our intuitive chatbot interface. They provide details of the situation and the location is fetched.
 
 <img src="https://github.com/user-attachments/assets/079110fd-3f84-4461-8260-a495f6f63fdd" alt="text-app" height="1000">
-
-3. Web-based Triage (for the dispatcher)
-The information is sent to a dispatcher’s live webpage. The dispatcher or an automated system can then verify the situation and select the appropriate response scenario.
-
 ![PHOTO-2025-09-11-11-00-32](https://github.com/user-attachments/assets/de0c4502-f8ef-4911-b82e-6b9618e434e8)
 
-3. The Magic Under the Hood:
- * Our system uses the powerful Google Maps API to instantly identify the closest hospital to the incident.
- * It then checks the real-time availability of that hospital to ensure they can accept the patient.
- * Finally, based on this verified information, an ambulance is dispatched with a single click.
+2. The Agent use the Google Maps API to instantly identify the best hospital based on proximity, the type of accident, and the ratings.
+3. The Agent then calls the selected hospital and informs them about the emergency out of the box.
 
-Our Secret Sauce: The Tech Stack
+<h2> The Tech Stack </h2>
 
  * Frontend:
      - Flutter
@@ -39,13 +33,13 @@ Our Secret Sauce: The Tech Stack
      - OpenAI Agents SDK
      - GPT OSS 20b
      - FastAPI (w Uvicorn)
+     - Ollama
 
 The Future is Now (and It's Watching)
 
 Our ultimate goal is to integrate with a more passive and proactive system: public surveillance cameras. This would allow us to automatically detect incidents in real-time and dispatch help before a bystander even has a chance to pull out their phone.
-This is our long-term vision, but for now, we're focused on perfecting our bystander-driven application to save lives, one report at a time.
 
-The Crew: The A-Team Behind the Aid
+<h3>Contributors</h3>
 
  * [Pranavi Sharma](https://github.com/pranavi79)
  * [Rishikesh Hulage]()
