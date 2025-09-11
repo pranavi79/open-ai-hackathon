@@ -44,6 +44,14 @@ class CostProtection:
         os.environ["DEMO_MODE"] = "true" if enabled else "false"
         logger.info(f"Demo mode {'enabled' if enabled else 'disabled'}")
     
+    def enable_demo_mode(self):
+        """Enable demo mode"""
+        self.set_demo_mode(True)
+    
+    def disable_demo_mode(self):
+        """Disable demo mode"""
+        self.set_demo_mode(False)
+
     def can_make_request(self, request_type: str) -> bool:
         """Check if a request can be made within daily limits"""
         if self.is_demo_mode():
@@ -152,6 +160,10 @@ class CostProtection:
                 "error": "Could not generate usage report",
                 "demo_mode": self.is_demo_mode()
             }
+    
+    def get_current_usage(self) -> Dict[str, Any]:
+        """Get current usage - alias for get_usage_report for compatibility"""
+        return self.get_usage_report()
     
     def reset_daily_usage(self):
         """Reset today's usage counters"""

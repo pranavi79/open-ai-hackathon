@@ -29,3 +29,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Frontend - keep all files (no build process)
+# All frontend files should be tracked
