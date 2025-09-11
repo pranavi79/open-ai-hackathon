@@ -1,0 +1,329 @@
+EMERGENCY RESPONSE AI SYSTEM - SETUP AND TESTING GUIDE
+================================================================
+
+TABLE OF CONTENTS
+-----------------
+1. Prerequisites
+2. Initial Setup
+3. Environment Configuration
+4. Starting the Application
+5. Testing the System
+6. Cost Protection Features
+7. Troubleshooting
+8. Stopping the Application
+
+================================================================
+1. PREREQUISITES
+================================================================
+
+REQUIRED SOFTWARE:
+- Python 3.8 or higher
+- pip (Python package manager)
+- Internet connection for API calls
+- Terminal/Command line access
+
+REQUIRED API KEYS:
+- OpenAI API Key (for AI analysis)
+- Google Maps API Key (for hospital search)
+- Twilio Account SID and Auth Token (for calling functionality)
+
+SYSTEM REQUIREMENTS:
+- macOS/Linux/Windows
+- At least 512MB free RAM
+- Port 8000 available (or configure different port)
+
+================================================================
+2. INITIAL SETUP
+================================================================
+
+STEP 1: Install Python Dependencies
+-----------------------------------
+Open terminal and navigate to the project directory:
+cd /path/to/open-ai-hackathon
+
+Install required packages:
+pip install -r requirements.txt
+
+STEP 2: Verify Installation
+---------------------------
+Check if all packages are installed correctly:
+python -c "import fastapi, openai, googlemaps, twilio; print('All packages installed successfully')"
+
+================================================================
+3. ENVIRONMENT CONFIGURATION
+================================================================
+
+STEP 1: Create Environment File
+-------------------------------
+Create a .env file in the root directory with the following variables:
+
+# API Keys
+OPENAI_API_KEY=your_openai_api_key_here
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+TWILIO_ACCOUNT_SID=your_twilio_account_sid_here
+TWILIO_AUTH_TOKEN=your_twilio_auth_token_here
+
+# Cost Protection Settings
+DEMO_MODE=true
+MAX_DAILY_OPENAI_REQUESTS=50
+MAX_DAILY_GOOGLE_REQUESTS=100
+MAX_DAILY_TWILIO_CALLS=5
+MAX_DAILY_TWILIO_MINUTES=10
+
+# Server Configuration
+DEBUG=true
+LOG_LEVEL=INFO
+
+STEP 2: Configure Twilio Emergency Address (IMPORTANT)
+------------------------------------------------------
+Before making actual calls, you MUST register an emergency address:
+
+Run the emergency address registration script:
+python register_emergency_address.py
+
+Follow the prompts to enter:
+- Full address
+- City, State, ZIP code
+- Phone number for verification
+
+This is REQUIRED by law for emergency calling services.
+
+STEP 3: Verify Environment Setup
+--------------------------------
+Check if environment is configured correctly:
+python safety_checklist.py
+
+This will show a 6-point safety checklist. All items should show "PASS".
+
+================================================================
+4. STARTING THE APPLICATION
+================================================================
+
+STEP 1: Navigate to Backend Directory
+-------------------------------------
+cd backend
+
+STEP 2: Start the FastAPI Server
+--------------------------------
+For development (with auto-reload):
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+For production:
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+STEP 3: Verify Server is Running
+--------------------------------
+The server should start and show:
+- "Uvicorn running on http://0.0.0.0:8000"
+- "Application startup complete"
+
+You can also check by opening: http://localhost:8000/health
+
+================================================================
+5. TESTING THE SYSTEM
+================================================================
+
+AUTOMATIC TESTING:
+------------------
+Run the comprehensive test suite:
+python test_suite.py
+
+This will test all 9 API endpoints and show detailed results.
+
+MANUAL TESTING:
+---------------
+
+STEP 1: Health Check
+--------------------
+Test URL: http://localhost:8000/health
+Expected: {"status": "healthy", "timestamp": "..."}
+
+curl http://localhost:8000/health
+
+STEP 2: Emergency Analysis
+--------------------------
+Test URL: http://localhost:8000/analyze-emergency
+Method: POST
+Body: {"message": "I was in a car accident", "location": {"latitude": 40.7128, "longitude": -74.0060}}
+
+curl -X POST http://localhost:8000/analyze-emergency \
+  -H "Content-Type: application/json" \
+  -d '{"message": "I was in a car accident", "location": {"latitude": 40.7128, "longitude": -74.0060}}'
+
+STEP 3: Hospital Search
+-----------------------
+Test URL: http://localhost:8000/find-hospitals
+Method: POST
+Body: {"latitude": 40.7128, "longitude": -74.0060, "radius": 5000}
+
+curl -X POST http://localhost:8000/find-hospitals \
+  -H "Content-Type: application/json" \
+  -d '{"latitude": 40.7128, "longitude": -74.0060, "radius": 5000}'
+
+STEP 4: Contact Emergency Services
+----------------------------------
+Test URL: http://localhost:8000/contact-emergency
+Method: POST
+Body: {"phone": "+1234567890", "message": "Emergency assistance needed"}
+
+curl -X POST http://localhost:8000/contact-emergency \
+  -H "Content-Type: application/json" \
+  -d '{"phone": "+1234567890", "message": "Emergency assistance needed"}'
+
+STEP 5: Call Hospital
+---------------------
+Test URL: http://localhost:8000/call-hospital
+Method: POST
+Body: {"hospital_id": "hospital_123", "user_phone": "+1234567890"}
+
+curl -X POST http://localhost:8000/call-hospital \
+  -H "Content-Type: application/json" \
+  -d '{"hospital_id": "hospital_123", "user_phone": "+1234567890"}'
+
+STEP 6: API Usage Monitoring
+----------------------------
+Test URL: http://localhost:8000/api-usage
+Expected: Usage statistics and costs
+
+curl http://localhost:8000/api-usage
+
+STEP 7: Demo Mode Controls
+-------------------------
+Enable demo mode:
+curl -X POST http://localhost:8000/demo-mode/enable
+
+Disable demo mode:
+curl -X POST http://localhost:8000/demo-mode/disable
+
+Check demo status:
+curl http://localhost:8000/demo-mode/status
+
+================================================================
+6. COST PROTECTION FEATURES
+================================================================
+
+USING THE COST PROTECTION CLI:
+------------------------------
+
+Check current usage:
+python cost_protection_cli.py usage
+
+Enable demo mode (no charges):
+python cost_protection_cli.py demo-on
+
+Disable demo mode (enable live APIs):
+python cost_protection_cli.py demo-off
+
+Set custom daily limits:
+python cost_protection_cli.py limits --openai 25 --google 50 --twilio-calls 3
+
+Reset today's usage counters:
+python cost_protection_cli.py reset
+
+UNDERSTANDING COST PROTECTION:
+------------------------------
+- Demo mode prevents all API charges
+- Daily limits prevent runaway costs
+- Real-time usage tracking
+- Automatic blocking when limits reached
+- Cost estimation before API calls
+
+================================================================
+7. TROUBLESHOOTING
+================================================================
+
+COMMON ISSUES AND SOLUTIONS:
+
+Issue: "Module not found" errors
+Solution: Ensure all packages are installed with: pip install -r requirements.txt
+
+Issue: "Port 8000 already in use"
+Solution: Kill existing process or use different port:
+- Kill: lsof -ti:8000 | xargs kill -9
+- Different port: --port 8001
+
+Issue: OpenAI API errors
+Solution: 
+- Check API key in .env file
+- Verify account has credits
+- Enable demo mode for testing
+
+Issue: Google Maps API errors
+Solution:
+- Verify API key is correct
+- Enable required APIs in Google Console
+- Check billing is enabled
+
+Issue: Twilio calling fails
+Solution:
+- Register emergency address first
+- Verify account SID and auth token
+- Check phone number format (+1XXXXXXXXXX)
+
+Issue: Server won't start
+Solution:
+- Check Python version (3.8+)
+- Verify working directory (should be in backend/)
+- Check .env file exists and is readable
+
+================================================================
+8. STOPPING THE APPLICATION
+================================================================
+
+GRACEFUL SHUTDOWN:
+-----------------
+Press Ctrl+C in the terminal where the server is running
+
+FORCE STOP:
+----------
+If server doesn't respond to Ctrl+C:
+
+Find process:
+lsof -i :8000
+
+Kill process:
+kill -9 <process_id>
+
+Or kill all Python processes on port 8000:
+lsof -ti:8000 | xargs kill -9
+
+VERIFY SHUTDOWN:
+---------------
+Check that port is free:
+lsof -i :8000
+
+Should return no results when properly stopped.
+
+================================================================
+ADDITIONAL NOTES
+================================================================
+
+SAFETY CONSIDERATIONS:
+- Always test in demo mode first
+- Monitor API usage regularly
+- Keep API keys secure and private
+- Register emergency address before live calling
+- Review costs before disabling demo mode
+
+DEVELOPMENT TIPS:
+- Use --reload flag for development
+- Check logs for detailed error information
+- Test each endpoint individually before integration
+- Monitor api_usage.json for usage tracking
+
+PRODUCTION DEPLOYMENT:
+- Use production ASGI server (gunicorn)
+- Set up proper logging and monitoring
+- Configure firewall and security settings
+- Set up database for persistent storage
+- Implement proper authentication
+
+FOR SUPPORT:
+- Check PROJECT_SUMMARY.md for system overview
+- Review COST_PROTECTION.md for cost details
+- Run safety_checklist.py for system validation
+- Check logs in backend/logs/ directory
+
+================================================================
+END OF SETUP AND TESTING GUIDE
+================================================================

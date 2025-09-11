@@ -2,7 +2,6 @@
 Configuration settings for the Emergency Response AI System
 """
 import os
-from typing import Dict, Any
 
 class Settings:
     """Application settings from environment variables"""
