@@ -15,7 +15,8 @@ How it Works: Unleashing the Power of the Crowd
 MediAid turns ordinary bystanders into a network of first responders.
 1. Incident Reporting (via Chatbot)
 A bystander can quickly report an incident using our intuitive chatbot interface. They provide details of the situation and the location.
-!
+![PHOTO-2025-09-11-23-29-27](https://github.com/user-attachments/assets/079110fd-3f84-4461-8260-a495f6f63fdd)
+
 2. Web-based Triage (for the dispatcher)
 The information is sent to a dispatcher’s live webpage. The dispatcher or an automated system can then verify the situation and select the appropriate response scenario.
 !
