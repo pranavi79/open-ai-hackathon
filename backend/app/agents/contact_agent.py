@@ -12,8 +12,6 @@ contact_agent = Agent(
     """,
     output_type=None,
     tools=[calling_tool],
-    tool_use_behavior="use_output_as_input",
-    tool_input_mapping={calling_tool: "message"},
     model=LitellmProvider().get_model(f'ollama_chat/{OLLAMA_MODEL}')
 )
 

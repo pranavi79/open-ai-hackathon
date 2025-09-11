@@ -22,7 +22,8 @@ async def contact_agent_service(payload: HospitalInfo) -> str:
             4. Ensure the output is clear, professional, and actionable.
             """
         )
-        result (result.final_output_as(str))
+
+        return "success"
     
     except Exception as e:
         raise Exception(f'contact_agent_service threw an exception {e}')

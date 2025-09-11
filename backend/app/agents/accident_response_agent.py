@@ -34,14 +34,15 @@ accident_response_agent = Agent(
 
     Do not continue the conversation. Always end with the JSON.
     ''',
-    output_type=AccidentReport,
+    output_type=None,
     model=LitellmProvider().get_model(f'ollama_chat/{OLLAMA_MODEL}')
 )
 
 async def main():
     print(await Runner.run(
             accident_response_agent, 
-            f"I just witnessed a motor accident on the road near Ananta Tech Park in Bangalore. A bike collided with a car at the traffic signal. The rider fell down and has a deep cut on his leg, and he looks like he’s bleeding heavily. He seems conscious but in a lot of pain. The car driver is safe. Please help with first aid tips and find the nearest hospital quickly. at longitude 77.6107 and latitude 12.9345"))
+            max_turns=1,
+            input=f"I just witnessed a motor accident on the road near Ananta Tech Park in Bangalore. A bike collided with a car at the traffic signal. The rider fell down and has a deep cut on his leg, and he looks like he’s bleeding heavily. He seems conscious but in a lot of pain. The car driver is safe. Please help with first aid tips and find the nearest hospital quickly. at longitude 77.6107 and latitude 12.9345"))
 
 
 if __name__ == "__main__":

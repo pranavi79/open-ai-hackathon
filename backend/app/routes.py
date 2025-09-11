@@ -8,7 +8,7 @@ router = APIRouter()
 
 @router.get("/")
 async def root():
-    return {"message": "This is your entry into open ai hackathon project"}
+    return {"message": "This is your entry into medi aid"}
 
 @router.post("/ask", response_model=AccidentReport)
 async def ask_question(payload: UserRequest):
