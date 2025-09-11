@@ -1,11 +1,11 @@
-🚨 MediAid: Your Digital Lifeline in Critical Moments 🚨
+<h1>🚨 MediAid: Your Digital Lifeline in Critical Moments 🚨</h1>
 
-Project Title: MediAid
+<h2>Project Title: MediAid</h2>
 
-The Big Idea:
+<h2>The Big Idea:</h2>
 Life can change in a single, unexpected moment. An accident, a sudden collapse—when every second counts, waiting for help is not an option. MediAid is an application designed to empower everyday people to become first responders, ensuring that professional medical help is dispatched quickly and efficiently to those in need.
 
-The Problem: A Race Against Time ⏱️
+<h2>The Problem: A Race Against Time ⏱️</h2>
 In critical situations, the "golden hour"—the first 60 minutes after a traumatic injury—is crucial for survival. However, in many places, especially in India, this time is often lost due to significant delays.
 • Slow Response Times: While some government agencies aim for a 25-30 minute response time, real-world data shows that in some cases, response times in India can be much longer. A study in Maharashtra, for example, found an average ambulance response time of 134.5 minutes for emergency cases.
 • A Global Challenge: The problem isn't unique to India. South Korea, despite its advanced technological infrastructure, faces similar issues. A study showed that almost 44% of administrative districts in South Korea could not reach an emergency medical center within the ideal time. This highlights that this is a global challenge that requires a smart, human-centered technological solution, not just more cameras.
@@ -16,9 +16,9 @@ MediAid turns ordinary bystanders into a network of first responders.
 1. Incident Reporting (via Chatbot)
 A bystander can quickly report an incident using our intuitive chatbot interface. They provide details of the situation and the location.
 
-![PHOTO-2025-09-11-23-29-27](https://github.com/user-attachments/assets/079110fd-3f84-4461-8260-a495f6f63fdd)
+<img src="https://github.com/user-attachments/assets/079110fd-3f84-4461-8260-a495f6f63fdd" alt="text-app" height="1000">
 
-2. Web-based Triage (for the dispatcher)
+3. Web-based Triage (for the dispatcher)
 The information is sent to a dispatcher’s live webpage. The dispatcher or an automated system can then verify the situation and select the appropriate response scenario.
 
 ![PHOTO-2025-09-11-11-00-32](https://github.com/user-attachments/assets/de0c4502-f8ef-4911-b82e-6b9618e434e8)
@@ -30,8 +30,15 @@ The information is sent to a dispatcher’s live webpage. The dispatcher or an a
 
 Our Secret Sauce: The Tech Stack
 
- * Frontend: Flutter
- * Backend & APIs: Python with Twillio, Google Maps API, OpenSDK, GPT OSS
+ * Frontend:
+     - Flutter
+ * Backend & APIs:
+     - Python
+     - Twillio
+     - Google Maps API
+     - OpenAI Agents SDK
+     - GPT OSS 20b
+     - FastAPI (w Uvicorn)
 
 The Future is Now (and It's Watching)
 
@@ -40,8 +47,8 @@ This is our long-term vision, but for now, we're focused on perfecting our bysta
 
 The Crew: The A-Team Behind the Aid
 
- * Pranavi Sharma
- * Rishikesh Hulage
- * Mehul Gulati
- * Mithilesh Patil
+ * [Pranavi Sharma](https://github.com/pranavi79)
+ * [Rishikesh Hulage]()
+ * [Mehul Gulati](https://github.com/MehulGulati007)
+ * [Mithilesh Patil]()
 
