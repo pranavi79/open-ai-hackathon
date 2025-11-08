@@ -45,4 +45,5 @@ Our ultimate goal is to integrate with a more passive and proactive system: publ
  * [Rishikesh Hulage]()
  * [Mehul Gulati](https://github.com/MehulGulati007)
  * [Mithilesh Patil]()
+ * [Shruti Nanda](https://github.com/Saggittarius-A/Saggittarius-A)
 
